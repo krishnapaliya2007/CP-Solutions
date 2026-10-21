@@ -1,0 +1,33 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int T;
+    cin >> T;
+
+    while (T--) {
+        int N, S;
+        cin >> N >> S;
+
+        int ans = -1;
+
+        for (int correct = 0; correct <= N; correct++) {
+            for (int wrong = 0; wrong + correct <= N; wrong++) {
+                int score = 4 * correct - wrong;
+
+                if (score == S) {
+                    int attempted = correct + wrong;
+
+                    if (ans == -1 || attempted < ans) {
+                        ans = attempted;
+                    }
+                }
+            }
+        }
+
+        cout << ans << '\n';
+    }
+
+    return 0;
+}
